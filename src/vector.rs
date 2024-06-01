@@ -105,6 +105,12 @@ impl<T: Numeric + Debug> Debug for Vector<T> {
     }
 }
 
+impl<T: Numeric + Clone> Clone for Vector<T> {
+    fn clone(&self) -> Self {
+        Self::new(self.x, self.y, self.z)
+    }
+}
+
 macro_rules! impl_vector_op {
     ($op:ident, $op_assign:ident, $method:ident, $method_assign:ident) => {
         impl<T: Numeric> $op for Vector<T> {
