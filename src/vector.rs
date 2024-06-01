@@ -50,50 +50,6 @@ impl<T: Numeric> Vector<T> {
     }
 }
 
-impl<T: Numeric + Into<f64> + From<f64>> Vector<T> {
-    pub fn x_axis() -> Self {
-        Self {
-            x: T::from(1.0),
-            y: T::from(0.0),
-            z: T::from(0.0),
-        }
-    }
-
-    pub fn y_axis() -> Self {
-        Self {
-            x: T::from(0.0),
-            y: T::from(1.0),
-            z: T::from(0.0),
-        }
-    }
-
-    pub fn z_axis() -> Self {
-        Self {
-            x: T::from(0.0),
-            y: T::from(0.0),
-            z: T::from(1.0),
-        }
-    }
-
-    pub fn magnitude(&self) -> f64 {
-        self.magnitude_squared().into().sqrt()
-    }
-
-    pub fn angle(&self, rhs: &Self) -> f64 {
-        let dot = self.dot(rhs).into();
-        let mag = self.magnitude() * rhs.magnitude();
-        dot.acos() / mag
-    }
-
-    pub fn normalize(&self) -> Self {
-        let mag = self.magnitude();
-        Self {
-            x: self.x / mag.into(),
-            y: self.y / mag.into(),
-            z: self.z / mag.into(),
-        }
-    }
-}
 impl<T: Numeric + Into<f32> + From<f32>> Vector<T> {
     pub fn x_axis() -> Self {
         Self {
