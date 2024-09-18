@@ -77,7 +77,7 @@ impl<T: Numeric> Matrix<T> {
         }
     }
 }
-impl<T: Numeric + Into<f64> + From<f64>> Matrix<T> {
+impl<T: Numeric + Into<f32> + From<f32>> Matrix<T> {
     pub fn unity() -> Self {
         Self {
             m11: T::from(1.0),
@@ -347,3 +347,4 @@ macro_rules! impl_scalar_op {
 
 impl_scalar_op!(Mul, MulAssign, mul, mul_assign);
 impl_scalar_op!(Div, DivAssign, div, div_assign);
+
