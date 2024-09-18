@@ -82,7 +82,7 @@ impl<T: Numeric + Into<f32> + From<f32>> Vector<T> {
     pub fn angle(&self, rhs: &Self) -> f32 {
         let dot = self.dot(rhs).into();
         let mag = self.magnitude() * rhs.magnitude();
-        dot.acos() / mag
+        (dot / mag).acos()
     }
 
     pub fn normalize(&self) -> Self {
